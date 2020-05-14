@@ -6,7 +6,8 @@ class ListOfDecks extends Component {
     render() {
         return (
             <View>
-                <Text>Decks</Text>
+                <Text>List of Decks</Text>
+                <Text>Number of Cards in deck</Text>
             </View>
         )
     }

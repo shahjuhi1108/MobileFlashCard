@@ -13,6 +13,7 @@ import reducer from "./reducers"
 import { Ionicons, FontAwesome } from "@expo/vector-icons"
 import ListOfDecks from './components/ListOfDecks'
 import Deck from './components/Deck'
+import Quiz from './components/Quiz'
 
 function AppStatusBar({ backgroundColor, ...props }) {
   return (
@@ -66,7 +67,7 @@ export default function App() {
             }}
           >
             <Tabs.Screen name="Decks" component={ListOfDecks} />
-            <Tabs.Screen name="Add Deck" component={AddDeck} />
+            <Tabs.Screen name="Add Deck" component={Quiz} />
           </Tabs.Navigator>
         </NavigationContainer>
       </View>
