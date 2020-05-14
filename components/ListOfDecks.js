@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 
-class AddDeck extends Component {
+class ListOfDecks extends Component {
     render() {
         return (
             <View>
@@ -12,4 +12,4 @@ class AddDeck extends Component {
     }
 }
 
-export default AddDeck
+export default ListOfDecks

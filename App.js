@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native'
-import Decks from './components/Decks'
 import AddDeck from './components/AddDeck'
+import AddCard from './components/AddCard'
 import Constants from "expo-constants"
 import { NavigationContainer } from "@react-navigation/native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
@@ -11,6 +11,8 @@ import { Provider } from "react-redux"
 import { purple, white } from "./utils/colors"
 import reducer from "./reducers"
 import { Ionicons, FontAwesome } from "@expo/vector-icons"
+import ListOfDecks from './components/ListOfDecks'
+import Deck from './components/Deck'
 
 function AppStatusBar({ backgroundColor, ...props }) {
   return (
@@ -63,7 +65,7 @@ export default function App() {
               }
             }}
           >
-            <Tabs.Screen name="Decks" component={Decks} />
+            <Tabs.Screen name="Decks" component={ListOfDecks} />
             <Tabs.Screen name="Add Deck" component={AddDeck} />
           </Tabs.Navigator>
         </NavigationContainer>

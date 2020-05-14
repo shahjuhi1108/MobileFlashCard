@@ -1,43 +1,40 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
 import { purple } from '../utils/colors'
- 
 
-class AddDeck extends Component {
 
-    state = {
-        deckName: '',
-    }
+class AddCard extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.header}>What is the title of your new deck?</Text>
-                <TextInput style={styles.input}
-                    underlineColorAndroid="transparent"
-                    placeholder="Deck Title"
-                    placeholderTextColor="#808080"
-                    autoCapitalize="sentences" />
+            <View  style={styles.container}>
+                <View>
+                    <TextInput style={styles.input}
+                        underlineColorAndroid="transparent"
+                        placeholder="Question"
+                        placeholderTextColor="#808080"
+                        autoCapitalize="sentences" />
+                    <TextInput style={styles.input}
+                        underlineColorAndroid="transparent"
+                        placeholder="Answer"
+                        placeholderTextColor="#808080"
+                        autoCapitalize="sentences" />
+                </View>
                 <TouchableOpacity
                     style={styles.submitButton}>
-                    <Text style={styles.submitButtonText}> Create Deck </Text>
+                    <Text style={styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>
             </View>
         )
     }
 }
 
-export default AddDeck
+export default AddCard
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 23,
-    },
-    header: {
-        padding: 10,
-        textAlign: 'center',
-        fontSize: 50,
+        paddingTop: 50,
     },
     input: {
         padding: 5,
@@ -50,13 +47,13 @@ const styles = StyleSheet.create({
     submitButton: {
         backgroundColor: purple,
         padding: 10,
+        marginBottom: 50,
         paddingLeft: 30,
         paddingRight: 30,
         borderRadius: 2,
-        marginBottom: 30,
         height: 45,
         alignSelf: "center",
-        justifyContent: "center",
+        justifyContent: 'center',
         position: 'absolute',
         bottom: 0,
     },
