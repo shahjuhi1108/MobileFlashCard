@@ -1,12 +1,30 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
 import { purple } from '../utils/colors'
- 
+import { connect } from 'react-redux'
+import { handleAddDeck } from '../actions/index'
+
+
 
 class AddDeck extends Component {
 
     state = {
         deckName: '',
+        toNextPage: false,
+    }
+
+    handlePress = (event) => {
+        event.preventDefault()
+
+        const { dispatch } = this.props
+
+        dispatch(handleAddDeck(this.state.deckName))
+
+        this.setState(() => ({
+            deckName: '',
+            toNextPage: true,
+        }))
+
     }
 
     render() {
@@ -17,8 +35,11 @@ class AddDeck extends Component {
                     underlineColorAndroid="transparent"
                     placeholder="Deck Title"
                     placeholderTextColor="#808080"
+                    value={this.state.deckName}
+                    onChangeText={deckName => this.setState({ deckName })}
                     autoCapitalize="sentences" />
                 <TouchableOpacity
+                    onPress={this.handlePress}
                     style={styles.submitButton}>
                     <Text style={styles.submitButtonText}> Create Deck </Text>
                 </TouchableOpacity>
@@ -27,7 +48,7 @@ class AddDeck extends Component {
     }
 }
 
-export default AddDeck
+export default connect()(AddDeck)
 
 const styles = StyleSheet.create({
     container: {
@@ -37,7 +58,7 @@ const styles = StyleSheet.create({
     header: {
         padding: 10,
         textAlign: 'center',
-        fontSize: 50,
+        fontSize: 40,
     },
     input: {
         padding: 5,
@@ -53,6 +74,7 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         borderRadius: 2,
+        marginTop: 30,
         marginBottom: 30,
         height: 45,
         alignSelf: "center",

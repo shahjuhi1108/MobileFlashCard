@@ -1,16 +1,37 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { getDecks } from '../utils/api'
+import { connect } from 'react-redux'
 
 
 class ListOfDecks extends Component {
+
     render() {
-        return (
+
+        const decksList = this.props.decksList
+        const decks = decksList ? Object.keys(decksList) : []
+        return decks.length !== 0 ?
+
             <View>
                 <Text>List of Decks</Text>
-                <Text>Number of Cards in deck</Text>
+                {decks.map((key) => (
+                    <View>
+                        <Text>{decksList[key].title}</Text>
+                        <Text>{decksList[key].questions.length} cards</Text>
+                    </View>
+                ))}
             </View>
-        )
+
+            : <Text>No decks</Text>
     }
 }
 
-export default ListOfDecks
+function mapStateToProps(state) {
+
+    console.log(state)
+    return {
+        decksList: state
+    }
+}
+
+export default connect(mapStateToProps)(ListOfDecks)

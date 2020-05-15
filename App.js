@@ -14,6 +14,9 @@ import { Ionicons, FontAwesome } from "@expo/vector-icons"
 import ListOfDecks from './components/ListOfDecks'
 import Deck from './components/Deck'
 import Quiz from './components/Quiz'
+import Demo from './components/Demo'
+import middleware from './middleware'
+
 
 function AppStatusBar({ backgroundColor, ...props }) {
   return (
@@ -28,9 +31,11 @@ const Tabs =
     ? createBottomTabNavigator()
     : createMaterialTopTabNavigator();
 
+    const store = createStore(reducer, middleware)
+
 export default function App() {
   return (
-    <Provider store={createStore(reducer)}>
+    <Provider store={store}>
       <View style={{ flex: 1 }}>
         <AppStatusBar backgroundColor={purple} barStyle="light-content" />
         <NavigationContainer>
@@ -67,7 +72,7 @@ export default function App() {
             }}
           >
             <Tabs.Screen name="Decks" component={ListOfDecks} />
-            <Tabs.Screen name="Add Deck" component={Quiz} />
+            <Tabs.Screen name="Add Deck" component={AddDeck} />
           </Tabs.Navigator>
         </NavigationContainer>
       </View>
