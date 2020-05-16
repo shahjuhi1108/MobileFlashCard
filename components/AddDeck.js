@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-nativ
 import { purple } from '../utils/colors'
 import { connect } from 'react-redux'
 import { handleAddDeck } from '../actions/index'
+import { addDeck } from '../utils/api'
 
 
 
@@ -31,6 +32,7 @@ class AddDeck extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>What is the title of your new deck?</Text>
+                <Text>{JSON.stringify(this.state.newValue)}</Text>
                 <TextInput style={styles.input}
                     underlineColorAndroid="transparent"
                     placeholder="Deck Title"

@@ -2,6 +2,7 @@ import { RECEIVE_DECKS, ADD_CARD_TO_DECK, ADD_DECK, RECEIVE_DECK } from '../acti
 
 
 function entries (state = {}, action) {
+    
     switch (action.type) {
         case RECEIVE_DECKS :
             return {

@@ -13,11 +13,17 @@ export function receiveDecks (decks) {
     }
 }
 
-export function handleGetDecks (decks) {
-    return receiveDecks(decks)
+export function handleGetDecks () {
+    return (dispatch) => {
+        return getDecks().then((decks) => {
+                const parsed = decks ? JSON.parse(decks) : {}
+                dispatch(receiveDecks(parsed))
+            })
+    }
 }
 
 export function saveDeck (title) {
+    
     return {
         type: ADD_DECK,
         title
@@ -25,8 +31,13 @@ export function saveDeck (title) {
 }
 
 export function handleAddDeck ( title ) {
-   return saveDeck(title)
+    return (dispatch) => {
+        return addDeck(
+            title
+        ).then(result => dispatch(saveDeck(title)))
+    }
 }
+
 
 export function saveCardToDeck (title, card) {
     return {

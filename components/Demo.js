@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { red, black, white, green } from '../utils/colors'
+import { AsyncStorage } from "react-native"
 
-class Quiz extends Component {
+
+const KEY = 'key'
+
+class Demo extends Component {
 
     render() {
         return (
@@ -25,7 +29,7 @@ class Quiz extends Component {
     }
 }
 
-export default Quiz
+export default Demo
 
 const styles = StyleSheet.create({
     container: {
