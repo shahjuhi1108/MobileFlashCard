@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_CARD_TO_DECK, ADD_DECK, RECEIVE_DECK } from '../actions/index'
+import { RECEIVE_DECKS, ADD_CARD_TO_DECK, ADD_DECK, RECEIVE_DECK, DELETE_DECK } from '../actions/index'
 
 
 function entries (state = {}, action) {
@@ -34,6 +34,11 @@ function entries (state = {}, action) {
                 ...state,
                 ...action.deck
             }
+
+        case DELETE_DECK :
+            const newState =  { ...state, [action.deck]: undefined}
+            delete newState[action.deck]
+            return newState
         default :
             return state
     }

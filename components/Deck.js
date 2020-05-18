@@ -5,9 +5,22 @@ import { connect } from 'react-redux'
 import NoQuiz from '../components/NoQuiz'
 import Quiz from '../components/Quiz'
 import AddCard from '../components/AddCard'
+import { handleDeleteDeck } from '../actions/index'
+import ListOfDecks from '../components/ListOfDecks'
 
 
 class Deck extends Component {
+
+    handleOnPress = (event) => {
+        event.preventDefault()
+
+        const { name, dispatch, navigation } = this.props
+
+        dispatch(handleDeleteDeck(name))
+
+        navigation.goBack()
+
+    }
 
     render() {
 
@@ -36,6 +49,7 @@ class Deck extends Component {
                     <Text style={styles.quizButtonText}> Start Quiz </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
+                    onPress={this.handleOnPress}
                     style={styles.textButton}>
                     <Text style={{ color: red, fontSize: 20 }}>Delete Deck</Text>
                 </TouchableOpacity>

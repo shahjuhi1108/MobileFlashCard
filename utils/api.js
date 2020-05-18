@@ -6,16 +6,39 @@ export function getDecks() {
     return AsyncStorage.getItem(STORAGE_KEY)
 }
 
-export function addDeck(title) {
+export function getDeck(title) {
+
+    return getDecks().then((decks) => 
+        JSON.parse(decks)[title])
+        
+}
+
+export function addDeck(title, questions = []) {
 
     let obj = {}
 
     obj[title] = {
         title: title,
-        questions: []
+        questions: questions
     }
 
     return AsyncStorage.mergeItem(STORAGE_KEY,
         JSON.stringify(obj)
     )
+}
+
+export function addCardToDeck(title, question, answer) {
+
+    return getDeck(title).then(deck => {
+        const questions = deck.questions.concat({
+            question: question,
+            answer: answer
+        })
+        return addDeck(title, questions)
+    })
+
+}
+
+export function deleteDeck(title) {
+    
 }

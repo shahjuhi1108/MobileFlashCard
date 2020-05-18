@@ -2,8 +2,9 @@ export const RECEIVE_DECKS = 'RECEIVE_DECKS'
 export const ADD_DECK = 'ADD_DECK'
 export const ADD_CARD_TO_DECK = 'ADD_CARD_TO_DECK'
 export const RECEIVE_DECK = 'RECEIVE_DECK'
+export const DELETE_DECK = 'DELETE_DECK'
 
-import { getDecks, addDeck } from '../utils/api'
+import { getDecks, addDeck, addCardToDeck } from '../utils/api'
 
 
 export function receiveDecks (decks) {
@@ -49,12 +50,29 @@ export function saveCardToDeck (title, question, answer) {
 }
 
 export function handleSaveCard (title, question, answer) {
-   return saveCardToDeck(title, question, answer)
-}
+   return (dispatch) => {
+       return addCardToDeck(
+           title,
+           question,
+           answer
+       ).then(result => dispatch(saveCardToDeck(title, question, answer)))
+   }
+} 
 
 export function receiveDeck (deck) {
     return {
         type: RECEIVE_DECK,
         deck
     }
+}
+
+export function deleteDeck (deck) {
+    return {
+        type: DELETE_DECK,
+        deck
+    }
+}
+
+export function handleDeleteDeck (deck) {
+    return deleteDeck(deck)
 }
