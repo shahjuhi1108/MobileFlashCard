@@ -1147,10 +1147,10 @@
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
 
-"@react-navigation/core@^5.5.2":
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.5.2.tgz#14e844287225fe7a41b471262f282ecd2d0404ea"
-  integrity sha512-nYPDpwPVZ3+S8YSj5ktMKgxQq9B298An4nfDhIobLNqMifvTXC15kWTPbMAWSYdwZr5tbw7SniP6+jXFZgfIlQ==
+"@react-navigation/core@^5.6.1":
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.6.1.tgz#c2951e56ef195027bfb4127d049aea5bd381fab1"
+  integrity sha512-cnz3WMJd4Ou6TGLYmEfUijs0Wk+O0Vnlye29B2W2SJfTfqU1w4J8Kl0lzVkg8CZQruicQRzLU8ONVeDN4lj9tA==
   dependencies:
     "@react-navigation/routers" "^5.4.4"
     escape-string-regexp "^4.0.0"
@@ -1166,12 +1166,12 @@
   dependencies:
     color "^3.1.2"
 
-"@react-navigation/native@^5.3.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.3.0.tgz#e55ebe18c125a6e6f0bc5de185a3cf688674e65d"
-  integrity sha512-mh6TT4F4TkiwNOI1dIhGD/6iZIjFClqhABZKfYQY4h1Zz8I0cS3Yw9FNhI27k4q0kYuEqQQvXKa2Q84WIK+mIQ==
+"@react-navigation/native@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.3.2.tgz#31786ae160ab61ac609b2611306b728681016ada"
+  integrity sha512-F9UzCHNjBQSQLv2RNc4q+Uo/3hRx00CIrP6CPBcrDxLe318frN/LHWqh7Dd6rRm7OAvDFYKsniEluLqTPK3Y0w==
   dependencies:
-    "@react-navigation/core" "^5.5.2"
+    "@react-navigation/core" "^5.6.1"
 
 "@react-navigation/routers@^5.4.4":
   version "5.4.4"
@@ -4409,10 +4409,12 @@ react-native-safe-area-context@0.7.3:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-0.7.3.tgz#ad6bd4abbabe195332c53810e4ce5851eb21aa2a"
   integrity sha512-9Uqu1vlXPi+2cKW/CW6OnHxA76mWC4kF3wvlqzq4DY8hn37AeiXtLFs2WkxH4yXQRrnJdP6ivc65Lz+MqwRZAA==
 
-react-native-screens@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.7.0.tgz#2d3cf3c39a665e9ca1c774264fccdb90e7944047"
-  integrity sha512-n/23IBOkrTKCfuUd6tFeRkn3lB2QZ3cmvoubRscR0JU/Zl4/ZyKmwnFmUv1/Fr+2GH/H8UTX59kEKDYYg3dMgA==
+react-native-screens@~2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.2.0.tgz#cc4cdf17426fdda97ad93a5e812a1899390f1978"
+  integrity sha512-a0VzxOWot7F9B/GQyDSssBRd3jUJazFnTQS61IiyReWB6aHlFhf3Xz10jBRoURXy1EMCDCHgenmTVTkKHpKyqQ==
+  dependencies:
+    debounce "^1.2.0"
 
 react-native-tab-view@^2.14.0:
   version "2.14.0"

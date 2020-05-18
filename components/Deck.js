@@ -6,9 +6,12 @@ import { purple, red, black, white } from '../utils/colors'
 class Deck extends Component {
 
     render() {
+
+        const { name } = this.props.route.params
+
         return (
             <View style={styles.container}>
-                <Text style={styles.header}>Name of Deck</Text>
+                <Text style={styles.header}>{name}</Text>
                 <Text style={styles.subText}>{0} cards</Text>
                 <TouchableOpacity
                     style={styles.cardButton}>

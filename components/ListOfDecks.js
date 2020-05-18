@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { handleGetDecks } from '../actions/index'
 import { connect } from 'react-redux'
 import { red, purple } from '../utils/colors'
+import Deck from '../components/Deck'
+
 
 
 class ListOfDecks extends Component {
@@ -14,7 +16,13 @@ class ListOfDecks extends Component {
 
     }
 
+    static navigationOptions = {
+        //To hide the NavigationBar from current Screen
+        header: null
+    };
+
     render() {
+        const { navigation } = this.props
         const decksList = this.props.decksList
         const decks = decksList ? Object.keys(decksList) : []
         return decks.length !== 0 ?
@@ -24,7 +32,8 @@ class ListOfDecks extends Component {
                 {decks.map((key) => (
                     <View key={key}>
                         <TouchableOpacity
-                            style={styles.textButton}>
+                            style={styles.textButton}
+                            onPress={() => navigation.navigate('Deck', {name: key})}>
                             <Text style={{ color: red, fontSize: 20 }}>Deck Name: {decksList[key].title}</Text>
                         </TouchableOpacity>
                         <Text style={styles.text}>Total: {decksList[key].questions.length} cards</Text>
@@ -50,9 +59,9 @@ const styles = StyleSheet.create({
         paddingTop: 23,
     },
     headerText: {
-        fontSize: 30, 
-        color: purple, 
-        justifyContent: 'center', 
+        fontSize: 30,
+        color: purple,
+        justifyContent: 'center',
         alignSelf: 'center'
     },
     textButton: {
