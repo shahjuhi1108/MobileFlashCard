@@ -21,7 +21,13 @@ function entries (state = {}, action) {
         case ADD_CARD_TO_DECK :
             return {
                 ...state,
-                [action.title]: action.card
+                [action.title]: {
+                    ...state[action.title],
+                    questions: state[action.title].questions.concat({
+                        question: action.question,
+                        answer: action.answer
+                    })
+                }
             }
         case RECEIVE_DECK :
             return {

@@ -39,12 +39,17 @@ export function handleAddDeck ( title ) {
 }
 
 
-export function saveCardToDeck (title, card) {
+export function saveCardToDeck (title, question, answer) {
     return {
         type: ADD_CARD_TO_DECK,
         title,
-        card
+        question,
+        answer
     }
+}
+
+export function handleSaveCard (title, question, answer) {
+   return saveCardToDeck(title, question, answer)
 }
 
 export function receiveDeck (deck) {

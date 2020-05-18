@@ -16,11 +16,6 @@ class ListOfDecks extends Component {
 
     }
 
-    static navigationOptions = {
-        //To hide the NavigationBar from current Screen
-        header: null
-    };
-
     render() {
         const { navigation } = this.props
         const decksList = this.props.decksList
@@ -46,8 +41,6 @@ class ListOfDecks extends Component {
 }
 
 function mapStateToProps(state) {
-
-    console.log(state)
     return {
         decksList: state
     }

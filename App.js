@@ -40,6 +40,8 @@ export default function App() {
             <Stack.Screen name='Tabs' component={MainTabNavigator} options={{headerShown: false}} />
             <Stack.Screen name='Deck' component={Deck} options={{ title: 'Deck Screen', headerTitleAlign: 'center' }} />
             <Stack.Screen name='Quiz' component={Quiz} options={{ title: 'Quiz Screen', headerTitleAlign: 'center' }} />
+            <Stack.Screen name='NoQuiz' component={NoQuiz} options={{ title: 'No Quiz', headerTitleAlign: 'center' }} />
+            <Stack.Screen name='AddCard' component={AddCard} options={{ title: 'Add Card Screen', headerTitleAlign: 'center' }} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

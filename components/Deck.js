@@ -1,23 +1,37 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { purple, red, black, white } from '../utils/colors'
+import { red, black, white } from '../utils/colors'
+import { connect } from 'react-redux'
+import NoQuiz from '../components/NoQuiz'
+import Quiz from '../components/Quiz'
+import AddCard from '../components/AddCard'
 
 
 class Deck extends Component {
 
     render() {
 
-        const { name } = this.props.route.params
+        const { navigation } = this.props
+        const { name, deck } = this.props
 
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>{name}</Text>
-                <Text style={styles.subText}>{0} cards</Text>
+                <Text style={styles.subText}>{deck.questions.length} cards</Text>
                 <TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate('AddCard', {name: name})
+                    }}
                     style={styles.cardButton}>
-                    <Text style={[styles.cardButtonText, {color: black}]}> Add Card </Text>
+                    <Text style={[styles.cardButtonText, { color: black }]}> Add Card </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
+                    onPress={() => {
+                        deck.questions.length === 0
+                        ? navigation.navigate('NoQuiz')
+                        : navigation.navigate('Quiz')
+                    }
+                    }
                     style={styles.quizButton}>
                     <Text style={styles.quizButtonText}> Start Quiz </Text>
                 </TouchableOpacity>
@@ -30,7 +44,20 @@ class Deck extends Component {
     }
 }
 
-export default Deck
+function mapStateToProps(state, ownProps) {
+
+    const { name } = ownProps.route.params
+
+    const deck = state[name]
+
+
+    return {
+        name,
+        deck
+    }
+}
+
+export default connect(mapStateToProps)(Deck)
 
 const styles = StyleSheet.create({
     container: {
@@ -48,7 +75,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     cardButton: {
-        backgroundColor: white, 
+        backgroundColor: white,
         borderColor: black,
         borderWidth: 2,
         padding: 10,

@@ -27,11 +27,6 @@ class AddDeck extends Component {
         }))
 
     }
-
-    static navigationOptions = {
-        //To hide the NavigationBar from current Screen
-        header: null
-    };
     
     render() {
         return (

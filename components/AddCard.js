@@ -1,27 +1,55 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
 import { purple } from '../utils/colors'
+import { connect } from 'react-redux'
+import { handleSaveCard } from '../actions/index'
 
 
 class AddCard extends Component {
 
+    state = {
+        question: '',
+        answer: ''
+    }
+    
+    handlePress = (event) => {
+        event.preventDefault()
+
+        const { name, dispatch } = this.props
+
+        dispatch(handleSaveCard(name, this.state.question, this.state.answer))
+
+        this.setState(() => ({
+            question: '',
+            answer: '',
+        }))
+    }
+
     render() {
+
         return (
             <View  style={styles.container}>
                 <View>
                     <TextInput style={styles.input}
                         underlineColorAndroid="transparent"
                         placeholder="Question"
+                        value={this.state.question}
+                        onChangeText={question => this.setState({ question })}
                         placeholderTextColor="#808080"
                         autoCapitalize="sentences" />
                     <TextInput style={styles.input}
                         underlineColorAndroid="transparent"
                         placeholder="Answer"
+                        value={this.state.answer}
+                        onChangeText={answer => this.setState({ answer })}
                         placeholderTextColor="#808080"
                         autoCapitalize="sentences" />
                 </View>
                 <TouchableOpacity
-                    style={styles.submitButton}>
+                    disabled={!this.state.question || !this.state.answer}
+                    style={styles.submitButton}
+                    onPress={this.handlePress}
+                    >
                     <Text style={styles.submitButtonText}> Submit </Text>
                 </TouchableOpacity>
             </View>
@@ -29,7 +57,17 @@ class AddCard extends Component {
     }
 }
 
-export default AddCard
+function mapStateToProps(state, ownProps) {
+
+    const { name } = ownProps.route.params
+
+    return {
+        name,
+    }
+}
+
+
+export default connect(mapStateToProps)(AddCard)
 
 const styles = StyleSheet.create({
     container: {
