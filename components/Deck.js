@@ -11,12 +11,20 @@ import ListOfDecks from '../components/ListOfDecks'
 
 class Deck extends Component {
 
+    state = {
+        isDeckDeleted: false 
+    }
+
     handleOnPress = (event) => {
         event.preventDefault()
 
         const { name, dispatch, navigation } = this.props
 
         dispatch(handleDeleteDeck(name))
+
+        this.setState({
+            isDeckDeleted: true
+        })
 
     }
 
@@ -25,9 +33,9 @@ class Deck extends Component {
         const { navigation } = this.props
         const { name, deck } = this.props
 
-        debugger
+        const { isDeckDeleted } = this.state
 
-        if (!deck) {
+        if (isDeckDeleted) {
             navigation.navigate('ListOfDecks')
             return null
         }
@@ -68,8 +76,9 @@ function mapStateToProps(state, ownProps) {
 
     const { name } = ownProps.route.params
 
-    const deck = state[name]
+    let deck = state[name]
 
+    deck = deck ? deck : {title: name, questions: []}
 
     return {
         name,

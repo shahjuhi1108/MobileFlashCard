@@ -32,11 +32,11 @@ class AddDeck extends Component {
 
         const { navigation } = this.props
 
-        debugger
-
         if(this.state.toNextPage === true) {
             navigation.navigate('Deck', {name: this.state.deckName})
-            return null
+            this.setState({
+                toNextPage: false
+            })
         }
 
         return (
@@ -51,6 +51,7 @@ class AddDeck extends Component {
                     onChangeText={deckName => this.setState({ deckName })}
                     autoCapitalize="sentences" />
                 <TouchableOpacity
+                    disabled={!this.state.deckName}
                     onPress={this.handlePress}
                     style={styles.submitButton}>
                     <Text style={styles.submitButtonText}> Create Deck </Text>

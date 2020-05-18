@@ -15,7 +15,7 @@ class AddCard extends Component {
     handlePress = (event) => {
         event.preventDefault()
 
-        const { name, dispatch } = this.props
+        const { name, dispatch, navigation } = this.props
 
         dispatch(handleSaveCard(name, this.state.question, this.state.answer))
 
@@ -23,6 +23,8 @@ class AddCard extends Component {
             question: '',
             answer: '',
         }))
+
+        navigation.goBack()
     }
 
     render() {
