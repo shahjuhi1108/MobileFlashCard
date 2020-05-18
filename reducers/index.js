@@ -36,8 +36,8 @@ function entries (state = {}, action) {
             }
 
         case DELETE_DECK :
-            const newState =  { ...state, [action.deck]: undefined}
-            delete newState[action.deck]
+            const newState =  { ...state, [action.title]: undefined}
+            delete newState[action.title]
             return newState
         default :
             return state

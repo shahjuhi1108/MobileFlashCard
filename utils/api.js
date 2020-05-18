@@ -39,6 +39,11 @@ export function addCardToDeck(title, question, answer) {
 
 }
 
-export function deleteDeck(title) {
-    
+export function removeDeck(title) {
+    return getDecks().then(results => {
+        const data = JSON.parse(results);
+        data[title] = undefined;
+        delete data[title];
+        AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      });
 }

@@ -18,8 +18,6 @@ class Deck extends Component {
 
         dispatch(handleDeleteDeck(name))
 
-        navigation.goBack()
-
     }
 
     render() {
@@ -27,13 +25,20 @@ class Deck extends Component {
         const { navigation } = this.props
         const { name, deck } = this.props
 
+        debugger
+
+        if (!deck) {
+            navigation.navigate('ListOfDecks')
+            return null
+        }
+
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>{name}</Text>
                 <Text style={styles.subText}>{deck.questions.length} cards</Text>
                 <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate('AddCard', {name: name})
+                        navigation.navigate('AddCard', { name: name })
                     }}
                     style={styles.cardButton}>
                     <Text style={[styles.cardButtonText, { color: black }]}> Add Card </Text>
@@ -41,8 +46,8 @@ class Deck extends Component {
                 <TouchableOpacity
                     onPress={() => {
                         deck.questions.length === 0
-                        ? navigation.navigate('NoQuiz')
-                        : navigation.navigate('Quiz')
+                            ? navigation.navigate('NoQuiz')
+                            : navigation.navigate('Quiz')
                     }
                     }
                     style={styles.quizButton}>
@@ -55,6 +60,7 @@ class Deck extends Component {
                 </TouchableOpacity>
             </View>
         )
+
     }
 }
 

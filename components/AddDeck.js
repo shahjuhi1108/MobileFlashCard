@@ -4,6 +4,7 @@ import { purple } from '../utils/colors'
 import { connect } from 'react-redux'
 import { handleAddDeck } from '../actions/index'
 import { addDeck } from '../utils/api'
+import Deck from '../components/Deck'
 
 
 
@@ -22,13 +23,22 @@ class AddDeck extends Component {
         dispatch(handleAddDeck(this.state.deckName))
 
         this.setState(() => ({
-            deckName: '',
             toNextPage: true,
         }))
 
     }
-    
+
     render() {
+
+        const { navigation } = this.props
+
+        debugger
+
+        if(this.state.toNextPage === true) {
+            navigation.navigate('Deck', {name: this.state.deckName})
+            return null
+        }
+
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>What is the title of your new deck?</Text>
