@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { purple, black, white } from '../utils/colors'
 import ListOfDecks from '../components/ListOfDecks'
@@ -17,14 +17,14 @@ class Scoreboard extends Component {
                     onPress={() => {
                         goBack()
                     }}
-                    style={styles.startOverButton}>
+                    style={Platform.OS === 'ios' ? styles.iosStartOverButton : styles.startOverButton}>
                     <Text style={styles.startOverButtonText}> Start Over </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
                         goHome()
                     }}
-                    style={styles.goHomeButton}>
+                    style={Platform.OS === 'ios' ? styles.iosGoHomeButton : styles.goHomeButton}>
                     <Text style={styles.goHomeButtonText}> Home Page </Text>
                 </TouchableOpacity>
             </View>
@@ -66,6 +66,36 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         borderRadius: 2,
+        marginBottom: 30,
+        height: 45,
+        width: 200,
+        alignSelf: "center",
+        justifyContent: "center",
+        position: 'absolute',
+        bottom: 30,
+    },
+    iosStartOverButton: {
+        backgroundColor: white,
+        borderColor: black,
+        borderWidth: 2,
+        padding: 20,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 7,
+        marginBottom: 40,
+        height: 45,
+        width: 200,
+        alignSelf: "center",
+        justifyContent: "center",
+        position: 'absolute',
+        bottom: 80,
+    },
+    iosGoHomeButton: {
+        backgroundColor: black,
+        padding: 20,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 7,
         marginBottom: 30,
         height: 45,
         width: 200,

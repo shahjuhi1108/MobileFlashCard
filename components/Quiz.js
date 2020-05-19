@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import { red, black, white, green } from '../utils/colors'
 import { connect } from 'react-redux'
 import Scoreboard from '../components/Scoreboard'
@@ -66,12 +66,12 @@ class Quiz extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={this.handlePressCorrect}
-                    style={styles.correctButton}>
+                    style={Platform.OS === 'ios' ? styles.iosCorrectButton : styles.correctButton}>
                     <Text style={styles.correctButtonText}> Correct </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={this.handlePressIncorrect}
-                    style={styles.incorrectButton}>
+                    style={Platform.OS === 'ios' ? styles.iosIncorrectButton : styles.incorrectButton}>
                     <Text style={styles.incorrectButtonText}> Incorrect </Text>
                 </TouchableOpacity>
             </View>
@@ -128,6 +128,34 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         borderRadius: 2,
+        marginBottom: 30,
+        height: 45,
+        width: 200,
+        alignSelf: "center",
+        justifyContent: "center",
+        position: 'absolute',
+        bottom: 30,
+    },
+    iosCorrectButton: {
+        backgroundColor: green,
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 7,
+        marginBottom: 30,
+        height: 45,
+        width: 200,
+        alignSelf: "center",
+        justifyContent: "center",
+        position: 'absolute',
+        bottom: 90,
+    },
+    iosIncorrectButton: {
+        backgroundColor: red,
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 7,
         marginBottom: 30,
         height: 45,
         width: 200,

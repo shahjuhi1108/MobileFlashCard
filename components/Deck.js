@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import { red, black, white } from '../utils/colors'
 import { connect } from 'react-redux'
 import NoQuiz from '../components/NoQuiz'
@@ -7,6 +7,7 @@ import Quiz from '../components/Quiz'
 import AddCard from '../components/AddCard'
 import { handleDeleteDeck } from '../actions/index'
 import ListOfDecks from '../components/ListOfDecks'
+import { clearLocalNotification, setLocalNotification } from '../utils/helper'
 
 
 class Deck extends Component {
@@ -25,6 +26,20 @@ class Deck extends Component {
         this.setState({
             isDeckDeleted: true
         })
+
+    }
+
+    handleStartQuiz = (event) => {
+        event.preventDefault()
+
+        const { name, deck, navigation } = this.props
+
+        clearLocalNotification()
+        .then(setLocalNotification)
+
+        deck.questions.length === 0
+                ? navigation.navigate('NoQuiz')
+                : navigation.navigate('Quiz', { name: name, deck: deck })
 
     }
 
@@ -48,16 +63,12 @@ class Deck extends Component {
                     onPress={() => {
                         navigation.navigate('AddCard', { name: name })
                     }}
-                    style={styles.cardButton}>
+                    style={Platform.OS === 'ios' ? styles.iosCardButton : styles.cardButton}>
                     <Text style={[styles.cardButtonText, { color: black }]}> Add Card </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={() => {
-                        deck.questions.length === 0
-                            ? navigation.navigate('NoQuiz')
-                            : navigation.navigate('Quiz', { name: name, deck: deck })
-                    }}
-                    style={styles.quizButton}>
+                    onPress={this.handleStartQuiz}
+                    style={Platform.OS === 'ios' ? styles.iosQuizButton : styles.quizButton}>
                     <Text style={styles.quizButtonText}> Start Quiz </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -123,6 +134,34 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         borderRadius: 2,
+        marginBottom: 30,
+        height: 45,
+        alignSelf: "center",
+        justifyContent: "center",
+        position: 'absolute',
+        bottom: 80,
+    },
+    iosCardButton: {
+        backgroundColor: white,
+        borderColor: black,
+        borderWidth: 7,
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 2,
+        marginBottom: 30,
+        height: 45,
+        alignSelf: "center",
+        justifyContent: "center",
+        position: 'absolute',
+        bottom: 140,
+    },
+    iosQuizButton: {
+        backgroundColor: black,
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 7,
         marginBottom: 30,
         height: 45,
         alignSelf: "center",

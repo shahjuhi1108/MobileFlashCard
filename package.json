@@ -16,6 +16,7 @@
     "@react-navigation/native": "^5.3.2",
     "@react-navigation/stack": "^5.3.6",
     "expo": "~37.0.3",
+    "expo-permissions": "~8.1.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-flippy": "^0.1.5",

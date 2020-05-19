@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native'
 import { purple } from '../utils/colors'
 import { connect } from 'react-redux'
 import { handleAddDeck } from '../actions/index'
@@ -41,7 +41,7 @@ class AddDeck extends Component {
                 <TouchableOpacity
                     disabled={!this.state.deckName}
                     onPress={this.handlePress}
-                    style={styles.submitButton}>
+                    style={Platform.OS === 'ios' ? styles.iosSubmitButton : styles.submitButton}>
                     <Text style={styles.submitButtonText}> Create Deck </Text>
                 </TouchableOpacity>
             </View>
@@ -75,6 +75,18 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         borderRadius: 2,
+        marginTop: 30,
+        marginBottom: 30,
+        height: 45,
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    iosSubmitButton: {
+        backgroundColor: purple,
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 7,
         marginTop: 30,
         marginBottom: 30,
         height: 45,

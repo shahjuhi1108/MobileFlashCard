@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native'
 import AddCard from './components/AddCard'
 import Constants from "expo-constants"
@@ -15,6 +15,7 @@ import MainTabNavigator from './navigation/MainTabNavigator'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import ListOfDecks from './components/ListOfDecks'
+import { setLocalNotification } from './utils/helper'
 
 const Stack = createStackNavigator()
 
@@ -29,6 +30,11 @@ function AppStatusBar({ backgroundColor, ...props }) {
 const store = createStore(reducer, middleware)
 
 export default function App() {
+
+  useEffect(() => {
+    setLocalNotification()
+  });
+  
   return (
     <Provider store={store}>
       <View style={{ flex: 1 }}>

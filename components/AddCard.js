@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'react-native'
 import { purple } from '../utils/colors'
 import { connect } from 'react-redux'
 import { handleSaveCard } from '../actions/index'
@@ -49,7 +49,7 @@ class AddCard extends Component {
                 </View>
                 <TouchableOpacity
                     disabled={!this.state.question || !this.state.answer}
-                    style={styles.submitButton}
+                    style={Platform.OS === 'ios' ? styles.iosSubmitButton : styles.submitButton}
                     onPress={this.handlePress}
                     >
                     <Text style={styles.submitButtonText}> Submit </Text>
@@ -91,6 +91,19 @@ const styles = StyleSheet.create({
         paddingLeft: 30,
         paddingRight: 30,
         borderRadius: 2,
+        height: 45,
+        alignSelf: "center",
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: 0,
+    },
+    iosSubmitButton: {
+        backgroundColor: purple,
+        padding: 10,
+        marginBottom: 50,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 7,
         height: 45,
         alignSelf: "center",
         justifyContent: 'center',
