@@ -12,7 +12,7 @@ import ListOfDecks from '../components/ListOfDecks'
 class Deck extends Component {
 
     state = {
-        isDeckDeleted: false 
+        isDeckDeleted: false
     }
 
     handleOnPress = (event) => {
@@ -55,9 +55,8 @@ class Deck extends Component {
                     onPress={() => {
                         deck.questions.length === 0
                             ? navigation.navigate('NoQuiz')
-                            : navigation.navigate('Quiz')
-                    }
-                    }
+                            : navigation.navigate('Quiz', { name: name, deck: deck })
+                    }}
                     style={styles.quizButton}>
                     <Text style={styles.quizButtonText}> Start Quiz </Text>
                 </TouchableOpacity>
@@ -78,7 +77,7 @@ function mapStateToProps(state, ownProps) {
 
     let deck = state[name]
 
-    deck = deck ? deck : {title: name, questions: []}
+    deck = deck ? deck : { title: name, questions: [] }
 
     return {
         name,

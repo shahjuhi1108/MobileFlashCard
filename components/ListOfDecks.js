@@ -36,7 +36,9 @@ class ListOfDecks extends Component {
                 ))}
             </View>
 
-            : <Text>No decks</Text>
+            : <View style={[styles.container, {alignItems: 'center'}]}>
+                <Text style={styles.noDeckText}>There are no decks available. Please add deck.</Text>
+            </View>
     }
 }
 
@@ -67,6 +69,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     text: {
+        padding: 10,
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    noDeckText: {
+        fontSize: 30,
+        color: purple,
         padding: 10,
         alignSelf: "center",
         justifyContent: "center",

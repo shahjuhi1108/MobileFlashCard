@@ -48,7 +48,7 @@ function MainTabNavigator() {
                 }}
                 navigationOptions = {{ header: null }}
             >
-                <Tabs.Screen name="ListOfDecks" component={ListOfDecks} />
+                <Tabs.Screen name="ListOfDecks" component={ListOfDecks} options={{ title: 'List Of Decks'}}/>
                 <Tabs.Screen name="Add Deck" component={AddDeck} />
             </Tabs.Navigator>
     )

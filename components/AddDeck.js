@@ -12,32 +12,20 @@ class AddDeck extends Component {
 
     state = {
         deckName: '',
-        toNextPage: false,
     }
 
     handlePress = (event) => {
         event.preventDefault()
 
-        const { dispatch } = this.props
+        const { dispatch, navigation } = this.props
 
         dispatch(handleAddDeck(this.state.deckName))
 
-        this.setState(() => ({
-            toNextPage: true,
-        }))
+        navigation.navigate('Deck', { name: this.state.deckName })
 
     }
 
     render() {
-
-        const { navigation } = this.props
-
-        if(this.state.toNextPage === true) {
-            navigation.navigate('Deck', {name: this.state.deckName})
-            this.setState({
-                toNextPage: false
-            })
-        }
 
         return (
             <View style={styles.container}>

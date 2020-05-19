@@ -9,14 +9,12 @@ import reducer from "./reducers"
 import { Ionicons, FontAwesome } from "@expo/vector-icons"
 import Deck from './components/Deck'
 import Quiz from './components/Quiz'
-import Demo from './components/Demo'
 import middleware from './middleware'
 import NoQuiz from './components/NoQuiz'
 import MainTabNavigator from './navigation/MainTabNavigator'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import ListOfDecks from './components/ListOfDecks'
-
 
 const Stack = createStackNavigator()
 
