@@ -11,6 +11,7 @@ class Quiz extends Component {
         currentCounter: 0,
         correct: 0,
         incorrect: 0,
+        showQuestion: false,
     }
 
     handlePressIncorrect = (event) => {
@@ -19,7 +20,8 @@ class Quiz extends Component {
 
         this.setState((prevState, props) => ({
             currentCounter: prevState.currentCounter + 1,
-            incorrect: prevState.incorrect + 1
+            incorrect: prevState.incorrect + 1,
+            showQuestion: false
         }));
 
     }
@@ -30,7 +32,8 @@ class Quiz extends Component {
 
         this.setState((prevState, props) => ({
             currentCounter: prevState.currentCounter + 1,
-            correct: prevState.correct + 1
+            correct: prevState.correct + 1,
+            showQuestion: false
         }));
     }
 
@@ -42,6 +45,11 @@ class Quiz extends Component {
         this.props.navigation.navigate('ListOfDecks')
     }
 
+    handleToggle = () => {
+        this.setState({ showQuestion: !this.state.showQuestion })
+    }
+
+
     render() {
 
         const { name, deck } = this.props
@@ -50,10 +58,11 @@ class Quiz extends Component {
 
         return this.state.currentCounter < total ? (
             <View style={styles.container}>
-                <Text style={styles.header}>{key.question}</Text>
+                {!this.state.showQuestion ? <Text style={styles.header}>{key.question}</Text> : <Text style={styles.header}>{key.answer}</Text>}
                 <TouchableOpacity
+                    onPress={this.handleToggle}
                     style={styles.textButton}>
-                    <Text style={{ color: red, fontSize: 20 }}>Answer</Text>
+                    {!this.state.showQuestion ? <Text style={{ color: red, fontSize: 20 }}>Show Answer</Text> : <Text style={{ color: red, fontSize: 20 }}>Show Question</Text>}
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={this.handlePressCorrect}
@@ -67,7 +76,7 @@ class Quiz extends Component {
                 </TouchableOpacity>
             </View>
         )
-        : <Scoreboard total={total} correct={this.state.correct} goBack={this.handleGoBack} goHome={this.handleGoHome}/>
+            : <Scoreboard total={total} correct={this.state.correct} goBack={this.handleGoBack} goHome={this.handleGoHome} />
     }
 }
 

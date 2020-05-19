@@ -80,8 +80,6 @@ const styles = StyleSheet.create({
         height: 45,
         alignSelf: "center",
         justifyContent: "center",
-        position: 'absolute',
-        bottom: 0,
     },
     submitButtonText: {
         fontSize: 20,
