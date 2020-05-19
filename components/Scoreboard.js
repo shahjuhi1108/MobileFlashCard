@@ -1,24 +1,31 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import { connect } from 'react-redux'
-import { purple, black, white } from '../utils/colors'
+import { purple, black, white, red } from '../utils/colors'
 import ListOfDecks from '../components/ListOfDecks'
 
 
 class Scoreboard extends Component {
     render() {
 
-        const { total, correct, goBack, goHome } = this.props
+        const { total, correct, goBack, goHome, startOver } = this.props
 
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>Your score is: {correct}/{total}</Text>
                 <TouchableOpacity
                     onPress={() => {
+                        startOver()
+                    }}
+                    style={styles.textButton}>
+                    <Text style={{color: red, fontSize: 20}}> Start Over </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => {
                         goBack()
                     }}
                     style={Platform.OS === 'ios' ? styles.iosStartOverButton : styles.startOverButton}>
-                    <Text style={styles.startOverButtonText}> Start Over </Text>
+                    <Text style={styles.startOverButtonText}> Go Back </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
@@ -117,5 +124,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         textAlign: 'center',
         color: white
-    }
+    },
+    textButton: {
+        padding: 10,
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderRadius: 2,
+        marginBottom: 30,
+        height: 45,
+        alignSelf: "center",
+        justifyContent: "center",
+    },
 })

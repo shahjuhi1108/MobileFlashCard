@@ -26,7 +26,6 @@ class Quiz extends Component {
 
     }
 
-
     handlePressCorrect = (event) => {
         event.preventDefault()
 
@@ -49,6 +48,14 @@ class Quiz extends Component {
         this.setState({ showQuestion: !this.state.showQuestion })
     }
 
+    handleStartOver = () => {
+        this.setState({ 
+            currentCounter: 0,
+            correct: 0,
+            incorrect: 0,
+        })
+    }
+
 
     render() {
 
@@ -58,6 +65,9 @@ class Quiz extends Component {
 
         return this.state.currentCounter < total ? (
             <View style={styles.container}>
+                <Text style={{ fontSize: 20, justifyContent: 'flex-start', alignSelf: 'flex-start', padding: 10}}>
+                    {this.state.currentCounter+1}/{total}
+                </Text>
                 {!this.state.showQuestion ? <Text style={styles.header}>{key.question}</Text> : <Text style={styles.header}>{key.answer}</Text>}
                 <TouchableOpacity
                     onPress={this.handleToggle}
@@ -76,7 +86,7 @@ class Quiz extends Component {
                 </TouchableOpacity>
             </View>
         )
-            : <Scoreboard total={total} correct={this.state.correct} goBack={this.handleGoBack} goHome={this.handleGoHome} />
+            : <Scoreboard total={total} correct={this.state.correct} startOver = {this.handleStartOver} goBack={this.handleGoBack} goHome={this.handleGoHome} />
     }
 }
 
