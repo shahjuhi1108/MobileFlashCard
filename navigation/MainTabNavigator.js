@@ -16,17 +16,17 @@ const Tabs =
 function MainTabNavigator() {
     return (
             <Tabs.Navigator
-                initialRouteName="Decks"
+                initialRouteName="ListOfDecks"
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ color, size }) => {
                         let icon;
-                        if (route.name === "Decks") {
+                        if (route.name === "ListOfDecks") {
                             icon = (
                                 <FontAwesome name="bring-forward" size={size} color={color} />
                             );
                         } else if (route.name === "Add Deck") {
                             icon = (
-                                <Ionicons name="plus-square" size={size} color={color} />
+                                <Ionicons name="add-outline" size={size} color={color} />
                             );
                         }
                         return icon;

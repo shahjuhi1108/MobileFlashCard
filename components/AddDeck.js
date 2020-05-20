@@ -19,6 +19,10 @@ class AddDeck extends Component {
 
         navigation.navigate('Deck', { name: this.state.deckName })
 
+        this.setState({
+            deckName: ''
+        })
+
     }
 
     render() {
@@ -96,5 +100,3 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 })
-
-//Make changes for ios and android based buttons - lookwise.

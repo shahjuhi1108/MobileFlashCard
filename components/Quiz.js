@@ -199,5 +199,3 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 })
-
-//Make changes for ios and android based buttons - lookwise.

@@ -113,11 +113,9 @@ const styles = StyleSheet.create({
         color: black,
         justifyContent: 'center',
         textAlign: 'center',
-        color: black
     },
     goHomeButtonText: {
         fontSize: 20,
-        color: black,
         justifyContent: 'center',
         textAlign: 'center',
         color: white

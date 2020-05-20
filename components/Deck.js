@@ -179,18 +179,15 @@ const styles = StyleSheet.create({
     },
     cardButtonText: {
         fontSize: 20,
-        color: black,
         justifyContent: 'center',
         textAlign: 'center',
         color: 'white'
     },
     quizButtonText: {
         fontSize: 20,
-        color: black,
         justifyContent: 'center',
         textAlign: 'center',
         color: 'white'
     }
 })
 
-//Make changes for ios and android based buttons - lookwise.
