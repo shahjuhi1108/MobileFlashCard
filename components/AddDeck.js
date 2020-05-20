@@ -3,10 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput, Platform } from 'r
 import { purple } from '../utils/colors'
 import { connect } from 'react-redux'
 import { handleAddDeck } from '../actions/index'
-import { addDeck } from '../utils/api'
-import Deck from '../components/Deck'
-
-
 
 class AddDeck extends Component {
 

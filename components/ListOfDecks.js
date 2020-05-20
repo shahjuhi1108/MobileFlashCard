@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { handleGetDecks } from '../actions/index'
 import { connect } from 'react-redux'
 import { red, purple } from '../utils/colors'
-import Deck from '../components/Deck'
 
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
-import { red, black, white, green } from '../utils/colors'
+import { red, black, green } from '../utils/colors'
 import { connect } from 'react-redux'
 import Scoreboard from '../components/Scoreboard'
 

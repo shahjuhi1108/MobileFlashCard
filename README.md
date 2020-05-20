@@ -15,5 +15,29 @@ You have to make sure you have:
 3. VScode
 4. Android Emulator/Device
 
-Once all of these are installed, run: brew install yarn/npm install that will install all the dependencies needed for you to run the project. 
-After all the dependecies are installed, run npm start/ yarn android/ yarn ios/ yarn web  and you will see the expo-cli run. On your smartphone you can download the Expo app in the App Store or Google Play Store.
+Once all of these are installed, 
+
+Clone the repository:
+
+`git clone https://github.com/shahjuhi1108/MobileFlashCard`
+
+run: 
+
+`yarn install`
+
+or
+
+`npm install`
+
+this will install all the dependencies needed for you to run the project. 
+After all the dependecies are installed, 
+
+run: 
+
+`npm start`
+
+or
+
+`yarn web`
+
+this will bring up the expo-cli. On your smartphone you can download the Expo app in the App Store or Google Play Store. and scan the QR code. This will run app on your phone.

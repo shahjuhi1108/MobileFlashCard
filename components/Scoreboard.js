@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
-import { connect } from 'react-redux'
-import { purple, black, white, red } from '../utils/colors'
-import ListOfDecks from '../components/ListOfDecks'
-
+import { black, white, red } from '../utils/colors'
 
 class Scoreboard extends Component {
     render() {

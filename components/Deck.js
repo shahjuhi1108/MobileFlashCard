@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import { red, black, white } from '../utils/colors'
 import { connect } from 'react-redux'
-import NoQuiz from '../components/NoQuiz'
-import Quiz from '../components/Quiz'
-import AddCard from '../components/AddCard'
 import { handleDeleteDeck } from '../actions/index'
-import ListOfDecks from '../components/ListOfDecks'
 import { clearLocalNotification, setLocalNotification } from '../utils/helper'
 
 
@@ -35,11 +31,11 @@ class Deck extends Component {
         const { name, deck, navigation } = this.props
 
         clearLocalNotification()
-        .then(setLocalNotification)
+            .then(setLocalNotification)
 
         deck.questions.length === 0
-                ? navigation.navigate('NoQuiz')
-                : navigation.navigate('Quiz', { name: name, deck: deck })
+            ? navigation.navigate('NoQuiz')
+            : navigation.navigate('Quiz', { name: name, deck: deck })
 
     }
 
