@@ -40,7 +40,7 @@ export default function App() {
       <View style={{ flex: 1 }}>
         <AppStatusBar backgroundColor={purple} barStyle="light-content" />
         <NavigationContainer>
-          <Stack.Navigator initialRouteName='ListOfDecks'>
+          <Stack.Navigator initialRouteName='Tabs'>
             <Stack.Screen name='Tabs' component={MainTabNavigator} options={{headerShown: false}} />
             <Stack.Screen name='Deck' component={Deck} options={{ title: 'Deck Screen', headerTitleAlign: 'center' }} />
             <Stack.Screen name='Quiz' component={Quiz} options={{ title: 'Quiz Screen', headerTitleAlign: 'center' }} />
