@@ -1,6 +1,9 @@
 # MobileFlashCard
 React Native app - Mobile Flash Cards to help study.
 
+# Demo
+
+![MobileFlashCardDemo](MobileFlashCardDemo.gif)
 
 # Description
 This app is created to help students study using the flash cards. The app lets you create decks based on various topics and let's you add infinite number of cards which contains the question about the topic and the correct answer for it. Once the decks are created and cards are added to the respective decks, the student can start the quiz and mark his/her answer (correct/incorrect), along the way student can see how many questions are remaining to answer from that deck. Once the quiz is finished, the student can see his/her final score. On the scoreboard, student gets various options like Start Over the quiz or Go back to the deck page or Go to Home page.
